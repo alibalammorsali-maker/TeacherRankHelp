@@ -1,0 +1,3058 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>کارت‌های ضروری بارگذاری مدارک</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap");
+
+    :root {
+      --primary: #1a5276;
+      --primary-light: #2980b9;
+      --secondary: #148f77;
+      --accent-gold: #f39c12;
+      --accent-orange: #e67e22;
+      --accent-red: #c0392b;
+      --accent-purple: #8e44ad;
+      --accent-green: #27ae60;
+      --accent-teal: #16a085;
+      --bg-light: #f0f4f8;
+      --bg-card: #ffffff;
+      --text-dark: #2c3e50;
+      --text-medium: #5d6d7e;
+      --text-light: #95a5a6;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.15);
+      --radius: 16px;
+      --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Vazirmatn", sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #1a5276 0%, #2980b9 40%, #148f77 100%);
+      color: white;
+      padding: 45px 20px 35px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+      animation: heroGlow 15s ease-in-out infinite;
+    }
+
+    @keyframes heroGlow {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(5%, 5%); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 {
+      font-size: clamp(22px, 4.5vw, 34px);
+      font-weight: 900;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero p {
+      font-size: clamp(13px, 2.5vw, 16px);
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto 5px;
+      font-weight: 400;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 26px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .hero-stat {
+      text-align: center;
+    }
+
+    .hero-stat-number {
+      font-size: 24px;
+      font-weight: 800;
+      display: block;
+      color: #f39c12;
+    }
+
+    .hero-stat-label {
+      font-size: 12px;
+      opacity: 0.8;
+    }
+
+    .tab-nav {
+      max-width: 1200px;
+      margin: 18px auto 6px;
+      padding: 0 20px;
+      position: relative;
+      z-index: 3;
+    }
+
+    .tab-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .tab-buttons {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 5px;
+    }
+
+    .tab-btn {
+      flex-shrink: 0;
+      padding: 8px 16px;
+      border: 2px solid #d5dbdb;
+      background: white;
+      border-radius: 30px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-medium);
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+    }
+
+    .tab-btn:hover {
+      border-color: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .tab-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .section-header {
+      max-width: 1200px;
+      margin: 35px auto 18px;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text-dark);
+    }
+
+    .section-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .section-desc {
+      font-size: 14px;
+      color: var(--text-medium);
+      margin-top: 6px;
+      padding-right: 56px;
+    }
+
+    .cards-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .cards-grid-2 {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      overflow: hidden;
+      position: relative;
+      cursor: default;
+    }
+
+    .card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+
+    .card-stripe {
+      height: 5px;
+      width: 100%;
+    }
+
+    .card-body {
+      padding: 22px 24px;
+    }
+
+    .card-header-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .card-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1.5;
+    }
+
+    .card-subtitle {
+      font-size: 12px;
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    .about-stack-frame {
+      height: 100%;
+    }
+
+    .about-stack-grid {
+      display: grid;
+      gap: 12px;
+      height: 100%;
+    }
+
+    .about-subcard {
+      border: 1px solid #dbeafe;
+      border-radius: 14px;
+      background: #ffffff;
+      padding: 12px 14px;
+    }
+
+    .about-subcard .card-header-row {
+      margin-bottom: 8px;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .about-subcard .card-icon-box {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      font-size: 18px;
+    }
+
+    .about-subcard .card-title {
+      font-size: 15px;
+    }
+
+    .about-subcard .card-subtitle {
+      font-size: 11.5px;
+    }
+
+    .about-subcard .card-content {
+      font-size: 12.5px;
+      line-height: 1.85;
+    }
+
+    .about-subcard .card-content ul li {
+      padding: 2px 0;
+      padding-right: 18px;
+    }
+
+    .about-subcard .card-content ul li::before {
+      width: 6px;
+      height: 6px;
+      top: 10px;
+    }
+
+    .ack-image-tools {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+      margin-bottom: 8px;
+      align-items: center;
+    }
+
+    .ack-image-input {
+      flex: 1;
+      min-width: 0;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 7px 10px;
+      font-family: inherit;
+      font-size: 12px;
+      color: #1f2937;
+      background: #ffffff;
+      direction: ltr;
+      text-align: left;
+    }
+
+    .ack-image-btn {
+      border: 1px solid #16a34a;
+      background: #16a34a;
+      color: #ffffff;
+      border-radius: 10px;
+      padding: 7px 12px;
+      font-family: inherit;
+      font-size: 12px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .ack-image-btn:hover {
+      background: #15803d;
+      border-color: #15803d;
+    }
+
+    .ack-image-area {
+      position: relative;
+      min-height: 180px;
+      border: 1px dashed #94a3b8;
+      border-radius: 12px;
+      background: #f8fafc;
+      overflow: hidden;
+    }
+
+    .ack-image-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 12px;
+      color: #64748b;
+      padding: 10px;
+      line-height: 1.9;
+    }
+
+    .ack-image {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      max-width: 240px;
+      max-height: 160px;
+      width: auto;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.22);
+      cursor: grab;
+      display: none;
+      user-select: none;
+      -webkit-user-drag: none;
+      touch-action: none;
+    }
+
+    .cards-grid-1 {
+      grid-template-columns: 1fr;
+    }
+
+    .progress-section {
+      max-width: 1200px;
+      margin: 8px auto 26px;
+      padding: 0 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .progress-card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .progress-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .steps-flow {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      overflow-x: auto;
+      padding: 6px 0 2px;
+    }
+
+    .step-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 110px;
+      text-align: center;
+      position: relative;
+    }
+
+    .step-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #fff;
+      font-size: 13px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+    }
+
+    .step-label {
+      font-size: 11px;
+      color: var(--text-medium);
+      font-weight: 600;
+      margin-top: 6px;
+      max-width: 120px;
+    }
+
+    .step-line {
+      height: 2px;
+      width: 42px;
+      background: #d7e3ef;
+      flex-shrink: 0;
+    }
+
+    .steps-flow.two-row {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(120px, 1fr));
+      gap: 14px 8px;
+      overflow: visible;
+      padding: 6px 0;
+    }
+
+    .steps-flow.two-row .step-line {
+      display: none;
+    }
+
+    .steps-flow.two-row .step-item {
+      min-width: 0;
+    }
+
+    @media (max-width: 1100px) {
+      .steps-flow.two-row {
+        grid-template-columns: repeat(4, minmax(110px, 1fr));
+      }
+      .steps-flow.two-row .step-item::after,
+      .steps-flow.two-row .step-item::before {
+        display: none;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .steps-flow.two-row {
+        grid-template-columns: repeat(3, minmax(110px, 1fr));
+      }
+      .steps-flow.two-row .step-item::after,
+      .steps-flow.two-row .step-item::before {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .steps-flow.two-row {
+        grid-template-columns: repeat(2, minmax(110px, 1fr));
+      }
+      .steps-flow.two-row .step-item::after,
+      .steps-flow.two-row .step-item::before {
+        display: none;
+      }
+    }
+
+    .prestart {
+      max-width: 1200px;
+      margin: 28px auto;
+      padding: 0 20px;
+    }
+
+    .prestart-title {
+      font-size: 20px;
+      font-weight: 800;
+      margin: 0 0 6px 0;
+    }
+
+    .prestart-subtitle {
+      margin: 0 0 14px 0;
+      color: var(--text-medium);
+      font-size: 13.5px;
+    }
+
+    .prestart-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .pre-card {
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 14px;
+      padding: 14px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .pre-card.must {
+      border-color: #ffd6d6;
+      background: #fffdfd;
+    }
+
+    .pre-card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .pre-card-title {
+      font-size: 15px;
+      font-weight: 800;
+      margin: 0 0 8px 0;
+      color: var(--text-dark);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      border: 1px solid #eaeaea;
+      background: #f7f7f7;
+      color: #222;
+      white-space: nowrap;
+    }
+
+    .badge--green { background: #effaf3; border-color: #d8f2e2; color: #1d6a3a; }
+    .badge--red { background: #fff1f1; border-color: #ffd6d6; color: #8a1f1f; }
+    .badge--amber { background: #fff7e8; border-color: #ffe6b8; color: #7a4a00; }
+    .badge--gray { background: #f4f4f4; border-color: #e9e9e9; color: #333; }
+    .badge--blue { background: #eef6ff; border-color: #d9ebff; color: #0b4a7a; }
+
+    .block {
+      border: 1px solid #f0f0f0;
+      border-radius: 12px;
+      padding: 8px 10px;
+      background: #fcfcfc;
+      margin: 8px 0;
+    }
+
+    .block--do {
+      background: #f9fbff;
+      border-color: #e6efff;
+    }
+
+    .block__k {
+      font-weight: 800;
+      font-size: 13px;
+      margin-bottom: 4px;
+      color: #222;
+    }
+
+    .block__v {
+      font-size: 13.3px;
+      color: #333;
+    }
+
+    .highlight-box {
+      background: #f8fafc;
+      border-right: 4px solid #cbd5e1;
+      padding: 12px;
+      border-radius: 10px;
+      margin-top: 10px;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      font-size: 13px;
+    }
+
+    .highlight-box.info { background: #e8f4ff; border-color: #3b82f6; }
+    .highlight-box.success { background: #ecfdf3; border-color: #22c55e; }
+    .highlight-box.danger { background: #fff1f2; border-color: #ef4444; }
+    .highlight-icon { font-size: 16px; }
+
+    .badge-row {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .info-badge {
+      display: inline-block;
+      background: #e6f7ff;
+      color: #0066cc;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+    }
+
+    .warning-badge {
+      display: inline-block;
+      background: #fff3cd;
+      color: #856404;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+    }
+
+    .success-badge {
+      display: inline-block;
+      background: #d4edda;
+      color: #155724;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+    }
+
+    .numbered-list {
+      margin: 0;
+      padding-right: 18px;
+    }
+
+    .numbered-list li {
+      margin: 6px 0;
+    }
+
+    .table-mini {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    .table-mini th {
+      background: #f1f5f9;
+      padding: 8px;
+      text-align: center;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .table-mini td {
+      padding: 8px;
+      text-align: center;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .card-content {
+      font-size: 13.5px;
+      color: var(--text-medium);
+      line-height: 2;
+    }
+
+    .card-content ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .card-content ul li {
+      padding: 5px 0;
+      padding-right: 22px;
+      position: relative;
+    }
+
+    .card-content ul li::before {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 14px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .card-blue .card-stripe { background: linear-gradient(90deg, #1a5276, #2980b9); }
+    .card-blue .card-icon-box { background: linear-gradient(135deg, #1a5276, #2980b9); color: white; }
+    .card-blue .card-content ul li::before { background: #2980b9; }
+
+    .card-green .card-stripe { background: linear-gradient(90deg, #148f77, #27ae60); }
+    .card-green .card-icon-box { background: linear-gradient(135deg, #148f77, #27ae60); color: white; }
+    .card-green .card-content ul li::before { background: #27ae60; }
+
+    .card-gold .card-stripe { background: linear-gradient(90deg, #e67e22, #f39c12); }
+    .card-gold .card-icon-box { background: linear-gradient(135deg, #e67e22, #f39c12); color: white; }
+    .card-gold .card-content ul li::before { background: #f39c12; }
+
+    .card-purple .card-stripe { background: linear-gradient(90deg, #6c3483, #8e44ad); }
+    .card-purple .card-icon-box { background: linear-gradient(135deg, #6c3483, #8e44ad); color: white; }
+    .card-purple .card-content ul li::before { background: #8e44ad; }
+
+    .card-red .card-stripe { background: linear-gradient(90deg, #922b21, #c0392b); }
+    .card-red .card-icon-box { background: linear-gradient(135deg, #922b21, #c0392b); color: white; }
+    .card-red .card-content ul li::before { background: #c0392b; }
+
+    .card-teal .card-stripe { background: linear-gradient(90deg, #0e6655, #16a085); }
+    .card-teal .card-icon-box { background: linear-gradient(135deg, #0e6655, #16a085); color: white; }
+    .card-teal .card-content ul li::before { background: #16a085; }
+
+    .stage-card {
+      border: 1px solid #e6eef3;
+      background: #ffffff;
+    }
+
+    .stage-card .card-stripe {
+      background: linear-gradient(90deg, #2563eb, #0ea5e9);
+    }
+
+    .stage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .stage-item {
+      border: 1px solid #edf2f7;
+      border-radius: 12px;
+      padding: 12px;
+      background: #f9fbff;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .stage-num {
+      width: 30px;
+      height: 30px;
+      border-radius: 10px;
+      background: #2563eb;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 13px;
+      flex-shrink: 0;
+      box-shadow: 0 6px 14px rgba(37, 99, 235, 0.18);
+    }
+
+    .stage-title {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+
+    .stage-notes {
+      font-size: 12.5px;
+      color: #475569;
+      line-height: 1.8;
+    }
+
+    .topics-block {
+      max-width: 1200px;
+      margin: 8px auto 4px;
+      padding: 0 20px;
+    }
+
+    .topics-block-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .topics-block-desc {
+      font-size: 13px;
+      color: var(--text-medium);
+      margin-top: 4px;
+    }
+
+    .topics-subgroup {
+      max-width: 1200px;
+      margin: 10px auto 6px;
+      padding: 0 20px;
+      font-size: 14px;
+      font-weight: 800;
+      color: #1f2937;
+    }
+
+    .topics-behavior-box {
+      max-width: 1200px;
+      margin: 8px auto 10px;
+      padding: 0 20px;
+    }
+
+    .topics-behavior-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .topics-behavior-item {
+      border: 1px solid #dbeafe;
+      background: #f8fbff;
+      border-radius: 10px;
+      padding: 8px 10px;
+      font-size: 12px;
+      line-height: 1.8;
+      color: #334155;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .topics-behavior-item strong {
+      color: #0f172a;
+    }
+
+    .no-upload-layout {
+      max-width: 1200px;
+      margin: 10px auto 12px;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .no-upload-frame {
+      border: 1px solid #dbeafe;
+      border-radius: 14px;
+      background: #f8fbff;
+      padding: 12px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .no-upload-frame.spec {
+      border-color: #d1fae5;
+      background: #f7fffb;
+    }
+
+    .no-upload-frame-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: #1e3a8a;
+      margin: 0 0 10px 0;
+      text-align: center;
+    }
+
+    .no-upload-frame.spec .no-upload-frame-title {
+      color: #065f46;
+    }
+
+    .no-upload-cards-two {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      flex: 1;
+    }
+
+    .no-upload-cards-one {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      flex: 1;
+    }
+
+    .no-upload-cards-one .card {
+      height: 100%;
+    }
+
+    .upload-main-frame {
+      max-width: 1200px;
+      margin: 10px auto 14px;
+      padding: 10px;
+      border: 1px solid #e9d5ff;
+      border-radius: 14px;
+      background: #fcfaff;
+    }
+
+    .upload-main-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #5b21b6;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+
+    .upload-main-desc {
+      font-size: 12.5px;
+      color: #6b7280;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .upload-important-note {
+      margin: 0 0 10px 0;
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    .upload-legend {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .upload-legend-item {
+      font-size: 11.5px;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: 3px 10px;
+      line-height: 1.6;
+      border: 1px solid #e5e7eb;
+      background: #ffffff;
+      color: #334155;
+    }
+
+    .upload-legend-item.school {
+      border-color: #f59e0b;
+      background: #fffbeb;
+      color: #92400e;
+    }
+
+    .upload-subframes-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    .upload-subframe {
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      background: #ffffff;
+      padding: 9px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .upload-subframe.build {
+      border-color: #bfdbfe;
+      background: #f8fbff;
+    }
+
+    .upload-subframe.research {
+      border-color: #ddd6fe;
+      background: #fbfaff;
+    }
+
+    .upload-subframe-title {
+      font-size: 13px;
+      font-weight: 800;
+      margin: 0 0 6px;
+      text-align: center;
+    }
+
+    .upload-subframe.build .upload-subframe-title { color: #1d4ed8; }
+    .upload-subframe.research .upload-subframe-title { color: #6d28d9; }
+
+    .upload-subframe-meta {
+      font-size: 11.5px;
+      color: #475569;
+      background: #ffffff;
+      border: 1px dashed #cbd5e1;
+      border-radius: 10px;
+      padding: 6px 8px;
+      margin-bottom: 8px;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .upload-items-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      flex: 1;
+    }
+
+    .upload-item-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      background: #ffffff;
+      padding: 8px;
+    }
+
+    .upload-subframe.build .upload-item-card {
+      border-right: 3px solid #3b82f6;
+    }
+
+    .upload-subframe.research .upload-item-card {
+      border-right: 3px solid #8b5cf6;
+    }
+
+    .upload-item-card.school-level {
+      background: #fffbeb;
+      border-color: #f59e0b;
+      box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.12) inset;
+    }
+
+    .upload-item-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .upload-item-title {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    .upload-item-score {
+      flex-shrink: 0;
+      font-size: 11px;
+      font-weight: 700;
+      color: #ffffff;
+      background: #64748b;
+      border-radius: 999px;
+      padding: 2px 8px;
+      line-height: 1.6;
+    }
+
+    .upload-item-ref {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 3px;
+      line-height: 1.6;
+    }
+
+    .upload-item-tag {
+      display: inline-block;
+      font-size: 10.5px;
+      font-weight: 700;
+      line-height: 1.6;
+      padding: 1px 8px;
+      border-radius: 999px;
+      border: 1px solid #f59e0b;
+      background: #fff7ed;
+      color: #9a3412;
+      margin-bottom: 3px;
+    }
+
+    .upload-item-note {
+      font-size: 11.5px;
+      color: #475569;
+      line-height: 1.7;
+    }
+
+    .pro-main-frame {
+      max-width: 1200px;
+      margin: 12px auto 14px;
+      padding: 10px;
+      border: 1px solid #fed7aa;
+      border-radius: 14px;
+      background: #fffbf7;
+    }
+
+    .pro-main-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: #9a3412;
+      text-align: center;
+      margin-bottom: 4px;
+    }
+
+    .pro-main-desc {
+      font-size: 11.5px;
+      color: #7c2d12;
+      text-align: center;
+      margin-bottom: 6px;
+      line-height: 1.6;
+    }
+
+    .pro-main-meta {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .pro-main-badge {
+      font-size: 10.5px;
+      font-weight: 700;
+      border-radius: 999px;
+      border: 1px solid #fdba74;
+      background: #fff7ed;
+      color: #9a3412;
+      padding: 2px 9px;
+      line-height: 1.6;
+    }
+
+    .pro-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .pro-cards-grid .card {
+      height: 100%;
+    }
+
+    .pro-cards-grid .card-body {
+      padding: 12px 13px;
+    }
+
+    .pro-cards-grid .card-header-row {
+      margin-bottom: 8px;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .pro-cards-grid .card-icon-box {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    .pro-cards-grid .card-title {
+      font-size: 13.5px;
+      line-height: 1.45;
+    }
+
+    .pro-cards-grid .card-subtitle {
+      font-size: 11px;
+      line-height: 1.4;
+    }
+
+    .pro-cards-grid .card-content {
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .pro-cards-grid .card-content ul li {
+      padding: 2px 0;
+      padding-right: 18px;
+    }
+
+    .pro-cards-grid .card-content ul li::before {
+      width: 6px;
+      height: 6px;
+      top: 10px;
+    }
+
+    .pro-cards-grid .table-quick {
+      margin-top: 4px;
+      font-size: 11px;
+    }
+
+    .quick-table-title {
+      margin: 4px 0 2px;
+      font-size: 11px;
+      font-weight: 800;
+      color: #1f2937;
+      background: #eef2ff;
+      border: 1px solid #c7d2fe;
+      border-radius: 8px;
+      padding: 3px 8px;
+      display: inline-block;
+      line-height: 1.6;
+    }
+
+    .pro-cards-grid .table-quick th,
+    .pro-cards-grid .table-quick td {
+      padding: 5px 6px;
+      line-height: 1.5;
+    }
+
+    .pro-cards-grid .table-quick th:first-child,
+    .pro-cards-grid .table-quick td:first-child {
+      text-align: right;
+    }
+
+    .pro-callout {
+      margin-top: 8px;
+    }
+
+    .quick-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 6px;
+    }
+
+    .quick-badge {
+      display: inline-block;
+      font-size: 10.5px;
+      font-weight: 700;
+      line-height: 1.5;
+      color: #334155;
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 999px;
+      padding: 1px 7px;
+    }
+
+    .example-groups {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 6px;
+      margin: 6px 0 4px;
+    }
+
+    .example-group {
+      border-radius: 10px;
+      padding: 6px 8px;
+      border: 1px solid #e5e7eb;
+      background: #ffffff;
+    }
+
+    .example-group.workgroup {
+      border-color: #bfdbfe;
+      background: #f8fbff;
+    }
+
+    .example-group.committee {
+      border-color: #ddd6fe;
+      background: #faf8ff;
+    }
+
+    .example-group.extracurricular {
+      border-color: #fed7aa;
+      background: #fffaf5;
+    }
+
+    .example-title {
+      font-size: 11px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+
+    .example-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .example-pill {
+      font-size: 10px;
+      line-height: 1.5;
+      color: #334155;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 999px;
+      padding: 1px 7px;
+      white-space: nowrap;
+    }
+
+    .keyword-highlight {
+      color: #b91c1c;
+      font-weight: 700;
+    }
+
+    @media (max-width: 768px) {
+      .cards-grid,
+      .cards-grid-2 {
+        grid-template-columns: 1fr;
+      }
+      .section-desc {
+        padding-right: 0;
+      }
+      .no-upload-layout {
+        grid-template-columns: 1fr;
+      }
+      .no-upload-cards-two {
+        grid-template-columns: 1fr;
+      }
+      .upload-subframes-grid {
+        grid-template-columns: 1fr;
+      }
+      .upload-items-grid {
+        grid-template-columns: 1fr;
+      }
+      .topics-behavior-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .pro-cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .ack-image-tools {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .ack-image-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="hero-content">
+      <h1>راهنمای موضوعی بارگذاری مدارک رتبه‌بندی</h1>
+      <div class="hero-badge">📌 کارت‌های خلاصه و کاربردی ضروری قبل از بارگذاری مدارک</div>
+    </div>
+  </div>
+
+  <div class="tab-nav">
+    <div class="tab-title">ضمن آرزوی موفقیت و ارتقای شما بزرگوار، قبل از ورود به سامانه جهت بارگذاری مدارک و ثبت و نهایی کردن آن، راهنمای زیر را مطالعه کنید.</div>
+    <div class="tab-buttons">
+      <button class="tab-btn active" onclick="showTab('tab-start')">راهنمای سریع همکاران</button>
+      <button class="tab-btn" onclick="showTab('tab-competencies')">شایستگی‌ها</button>
+      <button class="tab-btn" onclick="showTab('tab-ranks')">رتبه‌ها</button>
+      <button class="tab-btn" onclick="showTab('tab-topics')">موضوعات امتیازدهی</button>
+      <button class="tab-btn" onclick="showTab('tab-about')">درباره</button>
+    </div>
+  </div>
+
+  <div id="tab-start" class="tab-content active">
+
+  <div class="progress-section" id="sec-quick-5">
+    <div class="progress-card">
+      <div class="progress-title">مسیر سریع ثبت درخواست (۵ گام)</div>
+      <div class="steps-flow">
+        <div class="step-item">
+          <div class="step-circle" style="background: var(--primary);">۱</div>
+          <div class="step-label">ورود به <code>my.medu.ir</code></div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item">
+          <div class="step-circle" style="background: var(--accent-teal);">۲</div>
+          <div class="step-label">بارگذاری مستندات</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item">
+          <div class="step-circle" style="background: var(--accent-green);">۳</div>
+          <div class="step-label">انتخاب مدارک در رتبه‌بندی</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item">
+          <div class="step-circle" style="background: var(--accent-gold);">۴</div>
+          <div class="step-label">تکمیل خوداظهاری</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item">
+          <div class="step-circle" style="background: var(--accent-orange);">۵</div>
+          <div class="step-label">تأیید نهایی و پیگیری</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cards-grid cards-grid-1">
+    <div class="card card-blue">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <div class="card-icon-box">🖥️</div>
+          <div>
+            <div class="card-title">گام ۱: ورود به <code>my.medu.ir</code></div>
+            <div class="card-subtitle">ورود به صفحه شخصی از مسیر احراز هویت دولت من</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>با ورود به <code>my.medu.ir</code> به پنجره واحد خدمات الکترونیک وزارت آموزش و پرورش هدایت می‌شوید.</li>
+            <li>گزینه «ورود به صفحه شخصی (فرهنگیان و...)» را انتخاب کنید.</li>
+            <li>در درگاه دولت من، شماره تلفن همراه به نام شخص، کد امنیتی و کد ارسال‌شده پیامکی را وارد کنید.</li>
+            <li>پس از احراز هویت، به داشبورد شخصی فرهنگی منتقل می‌شوید.</li>
+            <li>از بخش «خدمات اداری»، وارد «پروفایل شخصی» شوید.</li>
+            <li>ابتدا در منوی «رتبه‌بندی» گزینه «درخواست» را باز کنید تا تاریخ مشمولیت و وضعیت شمول را ببینید.</li>
+            <li>اگر مشمول بودید، سپس به منوی «بارگذاری مستندات» بروید و مراحل بعدی را ادامه دهید.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <section class="prestart" id="sec-golden">
+    <h2 class="prestart-title">گام ۲: بارگذاری و تأیید مدارک و مستندات</h2>
+    <p class="prestart-subtitle">نقطه کانونی این مرحله: ثبت صحیح مدارک در «بارگذاری مستندات» و انتخاب دقیق آن‌ها در «رتبه‌بندی» برای ارزیابی.</p>
+  </section>
+
+  <div class="cards-grid">
+    <div class="card card-blue">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <div class="card-icon-box">👥</div>
+          <div>
+            <div class="card-title">چه کسانی مشمول هستند؟</div>
+            <div class="card-subtitle">افراد مشمول قانون رتبه‌بندی</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>نیروهای جدیدالاستخدام و افرادی که تاکنون تعیین رتبه نشده‌اند.</li>
+            <li>نیروهای اداری منتقل‌شده به واحدهای آموزشی، کارکنان تبدیل وضعیت‌شده و منتقل‌شده از سایر دستگاه‌ها.</li>
+            <li>افرادی که از مرخصی بدون حقوق یا دوره مأموریت و خدمت بازگشته‌اند.</li>
+            <li>کارکنانی که واجد شرایط ارتقاء به رتبه بالاتر هستند.</li>
+            <li>ارتقاء رتبه پس از پنج سال خدمت تمام‌وقت در رتبه فعلی امکان‌پذیر است و شرایط توسط سامانه کنترل می‌شود.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-teal">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <div class="card-icon-box">📌</div>
+          <div>
+            <div class="card-title">نکات سامانه و ثبت درخواست</div>
+            <div class="card-subtitle">اطلاع‌رسانی مهم برای همه مشمولین</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>ثبت درخواست هیچ‌گاه موجب کاهش رتبه فعلی نمی‌شود.</li>
+            <li>پروفایل در تمام سال فعال است و محدودیت زمانی برای ثبت درخواست وجود ندارد.</li>
+            <li>فقط مشمولینی که درخواست ثبت کنند، وارد فرآیند ارزیابی می‌شوند.</li>
+            <li>مسئولیت تأخیر در ارسال مدارک یا عدم ثبت درخواست، بر عهده مشمول است.</li>
+            <li>برای تسریع در صدور احکام، ثبت درخواست و تکمیل مدارک را زودتر انجام دهید.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-teal">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <div class="card-icon-box">🧭</div>
+          <div>
+            <div class="card-title">مسیر انجام مرحله ۲ در سامانه</div>
+            <div class="card-subtitle">از بارگذاری تا انتخاب برای پرونده رتبه‌بندی</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>در پروفایل شخصی، از منوی «بارگذاری مستندات» مدارک معتبر را ثبت کنید.</li>
+            <li>سپس در منوی «رتبه‌بندی»، پرونده تشکیل دهید و مدارک بارگذاری‌شده را انتخاب کنید.</li>
+            <li>انتخاب مدارک باید مطابق جداول شماره ۱ تا ۴ انجام شود.</li>
+            <li>منوی بارگذاری همیشه فعال است، اما تأیید نهایی فقط برای افراد مشمول امکان‌پذیر است.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-blue">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <div class="card-icon-box">⏱️</div>
+          <div>
+            <div class="card-title">شرط زمانی پذیرش مدارک</div>
+            <div class="card-subtitle">قانون بازه زمانی مدارک</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>ارتقاء رتبه: فقط مدارک بازه «اخذ رتبه فعلی تا تاریخ استحقاق رتبه جدید» پذیرفته می‌شود.</li>
+            <li>جدیدالاستخدام: مدارک قبل از تاریخ مشمولیت و خارج از سنوات حکمی پذیرفته نیست.</li>
+            <li>فاقد رتبه قبلی: مدارک از بدو استخدام تا تاریخ مشمولیت معتبر است.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-green">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <div class="card-icon-box">🧾</div>
+          <div>
+            <div class="card-title">استاندارد سند معتبر</div>
+            <div class="card-subtitle">حداقل‌های لازم برای رسیدگی</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>تمام گواهی‌ها باید امضای مرجع تأییدکننده داشته باشند.</li>
+            <li>وجود تاریخ، شماره، عنوان فعالیت، نام و نام‌خانوادگی الزامی است.</li>
+            <li>مدارک نامعتبر، ناقص، ناخوانا یا فاقد تاریخ/امضاء قابل رسیدگی نیستند.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-gold">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <div class="card-icon-box">🧩</div>
+          <div>
+            <div class="card-title">قواعد انتخاب مدارک در پرونده</div>
+            <div class="card-subtitle">کاهش خطای عدم تناسب و تکرار</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>اگر یک سند در چند بخش بارگذاری شود، فقط اولین ردیف متناسب (در صورت صحت) ارزیابی می‌شود.</li>
+            <li>آخرین مدرک تحصیلی اعمال‌شده قبل از تاریخ مشمولیت جدید ملاک امتیاز مدرک تحصیلی است.</li>
+            <li>تحصیل در دانشسرا، مراکز تربیت‌معلم، دانشگاه فرهنگیان، شهید رجایی و رشته‌های تعهد دبیری مشمول قانون ۱۳۶۹ قابل پذیرش است.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-purple">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <div class="card-icon-box">📚</div>
+          <div>
+            <div class="card-title">زیرمنوهای بارگذاری مستندات</div>
+            <div class="card-subtitle">بخش‌هایی که برای هرکدام باید سند بارگذاری شود</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>تولید و ساخت</li>
+            <li>پژوهش‌های مرتبط</li>
+            <li>همکاری و عضویت</li>
+            <li>سابقه تدریس و یادگیری</li>
+            <li>موفقیت‌ها و تقدیرنامه‌ها</li>
+            <li>در هر بخش، «راهنمای رتبه‌بندی این بخش» و «دریافت فایل راهنما» در دسترس است.</li>
+            <li>با کلیک روی دکمه «افزودن»، فرایند بارگذاری همان بخش شروع می‌شود.</li>
+            <li>در فرم افزودن، اطلاعاتی مانند عنوان مدرک، نوع مدرک، شماره گواهی، تاریخ‌ها و فایل مدرک ثبت می‌شود.</li>
+            <li>فرمت و حجم فایل را مطابق محدودیت اعلام‌شده همان صفحه بارگذاری رعایت کنید.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-red">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <div class="card-icon-box">🚫</div>
+          <div>
+            <div class="card-title">اشتباهات رایج — از این موارد پرهیز کنید</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>پس از تأیید نهایی درخواست، امکان ویرایش مدارک وجود ندارد.</li>
+            <li>مدارک نامعتبر، ناقص، ناخوانا یا فاقد تاریخ و امضاء قابل رسیدگی نیستند.</li>
+            <li>مدارک تکراری در بخش‌های مختلف، فقط در اولین بند مرتبط بررسی می‌شوند.</li>
+            <li>ارائه اطلاعات خلاف واقع باعث ارجاع به هیئت‌های بدوی تخلفات اداری و توقف پرونده می‌شود.</li>
+            <li>مدارک قبل از تاریخ مشمولیت نیروهای جدیدالاستخدام پذیرفته نیست.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-teal">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <div class="card-icon-box">✅</div>
+          <div>
+            <div class="card-title">نکات کلیدی بارگذاری مدارک</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>همه گواهی‌ها باید دارای امضاء، شماره، تاریخ و نام و نام خانوادگی باشند.</li>
+            <li>آخرین مدرک تحصیلیِ اعمال‌شده قبل از تاریخ مشمولیت جدید ملاک عمل است.</li>
+            <li>مدارک ارتقاء رتبه فقط در بازه رتبه فعلی تا تاریخ استحقاق رتبه جدید پذیرفته می‌شوند.</li>
+            <li>اعتراض به نتایج رتبه‌بندی حداکثر تا ۲۰ روز پس از ابلاغ رتبه امکان‌پذیر است.</li>
+            <li>در صورت عدم کسب امتیاز لازم، درخواست مجدد ۶ ماه بعد امکان‌پذیر است.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card card-gold">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <div class="card-icon-box">🗂️</div>
+          <div>
+            <div class="card-title">گام ۳: انتخاب مدارک در رتبه‌بندی</div>
+            <div class="card-subtitle">منوی «رتبه‌بندی»</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>تشکیل پرونده رتبه‌بندی و انتخاب مدارک بارگذاری‌شده.</li>
+            <li>انتخاب مدارک مطابق جداول شماره ۱ تا ۴ سامانه.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-purple">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <div class="card-icon-box">📝</div>
+          <div>
+            <div class="card-title">گام ۴: تکمیل خوداظهاری</div>
+            <div class="card-subtitle">الزام ورود به فرایند رسیدگی</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>تکمیل فرم خوداظهاری شایستگی‌های رفتاری در سامانه.</li>
+            <li>بدون تکمیل این فرم، پرونده وارد فرایند بررسی نمی‌شود.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-red">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <div class="card-icon-box">✅</div>
+          <div>
+            <div class="card-title">گام ۵: تأیید نهایی و پیگیری</div>
+            <div class="card-subtitle">ثبت نهایی درخواست</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>پس از تأیید نهایی، امکان ویرایش مدارک وجود ندارد.</li>
+            <li>پیگیری وضعیت پرونده از بخش رتبه‌بندی پروفایل شخصی.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="progress-section" id="sec-steps-9">
+    <div class="progress-card">
+      <div class="progress-title">مراحل فرایند رتبه‌بندی (۹ مرحله رسمی)</div>
+      <div class="steps-flow two-row">
+        <div class="step-item">
+          <div class="step-circle" style="background: #1a5276;">۱</div>
+          <div class="step-label">بررسی مشمولیت و ثبت درخواست</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item">
+          <div class="step-circle" style="background: #1f7a8c;">۲</div>
+          <div class="step-label">بارگذاری مدارک و مستندات</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item">
+          <div class="step-circle" style="background: #148f77;">۳</div>
+          <div class="step-label">تکمیل خوداظهاری شایستگی‌های رفتاری</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item">
+          <div class="step-circle" style="background: #2d6a4f;">۴</div>
+          <div class="step-label">بررسی و تأیید مدیر مستقیم</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item">
+          <div class="step-circle" style="background: #8c6d1f;">۵</div>
+          <div class="step-label">بررسی اداره محل خدمت</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item">
+          <div class="step-circle" style="background: #b85d2e;">۶</div>
+          <div class="step-label">بررسی گزینش و حراست</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item">
+          <div class="step-circle" style="background: #a12d2d;">۷</div>
+          <div class="step-label">کنترل نهایی ارزیاب حرفه‌ای</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item">
+          <div class="step-circle" style="background: #6c3483;">۸</div>
+          <div class="step-label">هیئت ممیزه و صدور حکم</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item">
+          <div class="step-circle" style="background: #0f172a;">۹</div>
+          <div class="step-label">رسیدگی به اعتراضات</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cards-grid cards-grid-1">
+    <div class="card stage-card">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <div class="card-icon-box">🧭</div>
+          <div>
+            <div class="card-title">ضروریات هر مرحله در یک نگاه</div>
+            <div class="card-subtitle">مراحل نه‌گانه فرآیند رتبه‌بندی — از ثبت درخواست تا صدور حکم</div>
+          </div>
+        </div>
+        <div class="stage-grid">
+          <div class="stage-item">
+            <div class="stage-num">۱</div>
+            <div>
+              <div class="stage-title">مرحله اول: 🔍 بررسی مشمولیت و ثبت درخواست</div>
+              <div class="stage-notes">سامانه به‌صورت خودکار تاریخ مشمولیت را کنترل می‌کند. افراد جدیدالاستخدام، نیروهای منتقل‌شده، بازگشتگان از مرخصی بدون حقوق و مشمولین ارتقاء رتبه می‌توانند درخواست ثبت کنند.</div>
+            </div>
+          </div>
+          <div class="stage-item">
+            <div class="stage-num">۲</div>
+            <div>
+              <div class="stage-title">مرحله دوم: 📁 بارگذاری مدارک و مستندات</div>
+              <div class="stage-notes">
+                از طریق پنجره واحد <code>my.medu.ir</code> → پروفایل شخصی → منوی «مستندات»، مدارک معتبر صادرشده از مراجع ذی‌صلاح را بارگذاری کنید؛ سپس از منوی «رتبه‌بندی»، پرونده تشکیل دهید.
+                <div class="badge-row" style="margin-top:6px;">
+                  <span class="badge ok">از ۱۴۰۴/۱۰/۲۸</span>
+                  <span class="badge warn">پس از تأیید نهایی امکان ویرایش مدارک نیست</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="stage-item">
+            <div class="stage-num">۳</div>
+            <div>
+              <div class="stage-title">مرحله سوم: 📝 تکمیل خوداظهاری شایستگی‌های رفتاری</div>
+              <div class="stage-notes">قبل از تأیید نهایی، فرم خوداظهاری را در سامانه کامل کنید. بدون تکمیل این فرم، پرونده وارد فرآیند رسیدگی نمی‌شود.</div>
+            </div>
+          </div>
+          <div class="stage-item">
+            <div class="stage-num">۴</div>
+            <div>
+              <div class="stage-title">مرحله چهارم: 👨‍💼 بررسی و تأیید مدیر مستقیم</div>
+              <div class="stage-notes">مدیر مستقیم مشاهدات رفتاری ثبت می‌کند، اصالت مدارک را با اصل بررسی کرده و در صورت نقص، پرونده را برای تکمیل بازمی‌گرداند.</div>
+            </div>
+          </div>
+          <div class="stage-item">
+            <div class="stage-num">۵</div>
+            <div>
+              <div class="stage-title">مرحله پنجم: 🏢 بررسی اداره محل خدمت</div>
+              <div class="stage-notes">کارشناس امور اداری: سنوات، ارزشیابی، مدرک تحصیلی، کسب مقام و تدریس به همکاران را بررسی می‌کند. کارشناسان مقاطع: تولید و ساخت، پژوهش‌ها، همکاری‌ها و یادگیری مستمر را تأیید می‌کنند.</div>
+            </div>
+          </div>
+          <div class="stage-item">
+            <div class="stage-num">۶</div>
+            <div>
+              <div class="stage-title">مرحله ششم: 🔒 بررسی گزینش و حراست</div>
+              <div class="stage-notes">گزینش شایستگی رفتاری «رعایت اخلاق اسلامی» و حراست شایستگی رفتاری «قانون‌گرایی» را ارزیابی و امتیاز ثبت می‌کنند.</div>
+            </div>
+          </div>
+          <div class="stage-item">
+            <div class="stage-num">۷</div>
+            <div>
+              <div class="stage-title">مرحله هفتم: 🎯 کنترل نهایی ارزیاب حرفه‌ای</div>
+              <div class="stage-notes">ارزیاب حرفه‌ای کل پرونده را بررسی نهایی می‌کند. در صورت تأیید، به هیئت ممیزه ارسال می‌شود؛ در غیر این صورت به مراجع قبلی بازمی‌گردد.</div>
+            </div>
+          </div>
+          <div class="stage-item">
+            <div class="stage-num">۸</div>
+            <div>
+              <div class="stage-title">مرحله هشتم: ⚖️ بررسی هیئت ممیزه و صدور حکم</div>
+              <div class="stage-notes">هیئت ممیزه رتبه استحقاقی را تعیین می‌کند. رتبه‌های پایین‌تر در هیئت منطقه، دانشیار در استان و استاد در هیئت ممیزه مرکزی تأیید می‌شوند.</div>
+            </div>
+          </div>
+          <div class="stage-item">
+            <div class="stage-num">۹</div>
+            <div>
+              <div class="stage-title">مرحله نهم: 📣 رسیدگی به اعتراضات</div>
+              <div class="stage-notes">
+                در صورت اعتراض، حداکثر ۲۰ روز پس از ابلاغ رتبه، در سامانه ثبت کنید. هیئت یک سطح بالاتر رسیدگی می‌کند؛ اگر اعتراض وارد باشد، تاریخ اجرای حکم از تاریخ استحقاق محاسبه می‌شود.
+                <div class="badge-row" style="margin-top:6px;">
+                  <span class="badge warn">مهلت اعتراض: ۲۰ روز</span>
+                  <span class="badge bad">در صورت عدم احراز: درخواست مجدد پس از ۶ ماه</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+  <div id="tab-competencies" class="tab-content">
+  <div class="section-header">
+    <div class="section-title">
+      <div class="section-icon" style="background: linear-gradient(135deg, #16a085, #1abc9c);">🧩</div>
+      شایستگی‌ها — جمع‌بندی کوتاه و گویا
+    </div>
+  <div class="section-desc">چهار شایستگی اصلی و اجزای رفتاری/سندی آن‌ها</div>
+  </div>
+
+  <div class="cards-grid cards-grid-1">
+    <div class="card card-gold">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <div class="card-icon-box">⭐</div>
+          <div>
+            <div class="card-title">ساختار ۴ شایستگی اصلی</div>
+            <div class="card-subtitle">مجموع ۱۰۰۰ امتیاز (رفتاری + سندی)</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="badge-row">
+            <span class="info-badge">عمومی: ۲۰۰</span>
+            <span class="info-badge">تخصصی: ۲۵۰</span>
+            <span class="info-badge">حرفه‌ای: ۲۷۰</span>
+            <span class="info-badge">تجربه: ۲۸۰</span>
+          </div>
+          <div class="highlight-box success">
+            <span class="highlight-icon">✅</span>
+            <span>رتبه بر اساس تکمیل حداقل‌های هر شایستگی به‌صورت جداگانه سنجیده می‌شود، نه صرفاً جمع کل امتیازها.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cards-grid-2">
+    <div class="card card-blue">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <div class="card-icon-box">🟦</div>
+          <div>
+            <div class="card-title">شایستگی عمومی (۲۰۰ امتیاز)</div>
+            <div class="card-subtitle">تماماً رفتاری</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>ارتباط و تعامل مؤثر، نظم و آراستگی، باور به ارزش‌ها و قانون‌گرایی.</li>
+            <li>ارزیابی توسط مدیر مستقیم/گروه‌های آموزشی/راهبران.</li>
+            <li>قانون‌گرایی توسط حراست و رعایت اخلاق اسلامی توسط گزینش بررسی می‌شود.</li>
+          </ul>
+          <div class="badge-row">
+            <span class="info-badge">امتیاز کل: ۲۰۰</span>
+            <span class="success-badge">بدون سند</span>
+          </div>
+          <div class="quick-table-title">حداقل/حداکثر امتیاز لازم برای هر رتبه</div>
+          <table class="table-mini">
+            <thead>
+              <tr>
+                <th>رتبه</th>
+                <th>بازه امتیاز</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>آموزشیار معلم</td><td>تا ۹۹</td></tr>
+              <tr><td>مربی معلم</td><td>۱۰۰–۱۱۹</td></tr>
+              <tr><td>استادیار معلم</td><td>۱۲۰–۱۳۹</td></tr>
+              <tr><td>دانشیار معلم</td><td>۱۴۰–۱۵۹</td></tr>
+              <tr><td>استاد معلم</td><td>۱۶۰–۲۰۰</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-green">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <div class="card-icon-box">🟩</div>
+          <div>
+            <div class="card-title">شایستگی تخصصی (۲۵۰ امتیاز)</div>
+            <div class="card-subtitle">رفتاری ۸۰ + سندی ۱۷۰</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>تسلط بر دانش تخصصی/تربیتی و اسناد بالادستی (رفتاری).</li>
+            <li>مدرک تحصیلی و امتیاز تحصیل در مراکز تربیت‌معلم.</li>
+            <li>تولید و ساخت، پژوهش‌ها و تألیف/مقالات (سندی).</li>
+          </ul>
+          <div class="badge-row">
+            <span class="info-badge">سندی: ۱۷۰</span>
+            <span class="info-badge">رفتاری: ۸۰</span>
+          </div>
+          <div class="quick-table-title">حداقل/حداکثر امتیاز لازم برای هر رتبه</div>
+          <table class="table-mini">
+            <thead>
+              <tr>
+                <th>رتبه</th>
+                <th>بازه امتیاز</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>آموزشیار معلم</td><td>تا ۱۲۵</td></tr>
+              <tr><td>مربی معلم</td><td>۱۲۶–۱۵۰</td></tr>
+              <tr><td>استادیار معلم</td><td>۱۵۱–۱۷۵</td></tr>
+              <tr><td>دانشیار معلم</td><td>۱۷۶–۲۰۰</td></tr>
+              <tr><td>استاد معلم</td><td>۲۰۱–۲۵۰</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-gold">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <div class="card-icon-box">🟧</div>
+          <div>
+            <div class="card-title">شایستگی حرفه‌ای (۲۷۰ امتیاز)</div>
+            <div class="card-subtitle">رفتاری ۱۰۰ + سندی ۱۷۰</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>طراحی و اجرای یادگیری (رفتاری).</li>
+            <li>همکاری در اداره امور، یادگیری مستمر، سابقه تدریس به همکاران.</li>
+            <li>کسب مقام، موفقیت‌ها و تقدیرنامه‌ها.</li>
+          </ul>
+          <div class="badge-row">
+            <span class="info-badge">سندی: ۱۷۰</span>
+            <span class="info-badge">رفتاری: ۱۰۰</span>
+          </div>
+          <div class="quick-table-title">حداقل/حداکثر امتیاز لازم برای هر رتبه</div>
+          <table class="table-mini">
+            <thead>
+              <tr>
+                <th>رتبه</th>
+                <th>بازه امتیاز</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>آموزشیار معلم</td><td>تا ۱۴۰</td></tr>
+              <tr><td>مربی معلم</td><td>۱۴۱–۱۶۵</td></tr>
+              <tr><td>استادیار معلم</td><td>۱۶۶–۱۹۰</td></tr>
+              <tr><td>دانشیار معلم</td><td>۱۹۱–۲۱۵</td></tr>
+              <tr><td>استاد معلم</td><td>۲۱۶–۲۷۰</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-purple">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <div class="card-icon-box">🟪</div>
+          <div>
+            <div class="card-title">تجربه (۲۸۰ امتیاز)</div>
+            <div class="card-subtitle">رفتاری ۱۲۰ + سندی ۱۶۰</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>سنوات خدمت تجربی (۱۳۰) و ارزشیابی سالانه (۳۰).</li>
+            <li>ملاک، میانگین ۵ سال پایانی تا تاریخ مشمولیت است.</li>
+            <li>تعجیل سنوات در سنوات مؤثر لحاظ می‌شود.</li>
+          </ul>
+          <div class="badge-row">
+            <span class="info-badge">سنوات + ارزشیابی</span>
+            <span class="warning-badge">سقف ۲۸۰</span>
+          </div>
+          <div class="quick-table-title">حداقل/حداکثر امتیاز لازم برای هر رتبه</div>
+          <table class="table-mini">
+            <thead>
+              <tr>
+                <th>رتبه</th>
+                <th>بازه امتیاز</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>آموزشیار معلم</td><td>تا ۱۳۴</td></tr>
+              <tr><td>مربی معلم</td><td>۱۳۵–۱۶۴</td></tr>
+              <tr><td>استادیار معلم</td><td>۱۶۵–۱۹۴</td></tr>
+              <tr><td>دانشیار معلم</td><td>۱۹۵–۲۲۴</td></tr>
+              <tr><td>استاد معلم</td><td>۲۲۵–۲۸۰</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="cards-grid cards-grid-1">
+    <div class="card card-teal">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <div class="card-icon-box">📋</div>
+          <div>
+            <div class="card-title">جدول شماره (۵) — حداقل امتیازات لازم برای احراز هر یک از رتبه‌ها در هریک از مؤلفه‌ها</div>
+            <div class="card-subtitle">مؤلفه‌های ارزیابی به تفکیک عنوان رتبه</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <table class="table-mini">
+            <thead>
+              <tr>
+                <th>عنوان رتبه</th>
+                <th>شایستگی‌های عمومی</th>
+                <th>شایستگی‌های تخصصی</th>
+                <th>شایستگی‌های حرفه‌ای</th>
+                <th>تجربه</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>آموزشیار معلم</td><td>تا ۹۹</td><td>تا ۱۲۵</td><td>تا ۱۴۰</td><td>تا ۱۳۴</td></tr>
+              <tr><td>مربی معلم</td><td>۱۰۰–۱۱۹</td><td>۱۲۶–۱۵۰</td><td>۱۴۱–۱۶۵</td><td>۱۳۵–۱۶۴</td></tr>
+              <tr><td>استادیار معلم</td><td>۱۲۰–۱۳۹</td><td>۱۵۱–۱۷۵</td><td>۱۶۶–۱۹۰</td><td>۱۶۵–۱۹۴</td></tr>
+              <tr><td>دانشیار معلم</td><td>۱۴۰–۱۵۹</td><td>۱۷۶–۲۰۰</td><td>۱۹۱–۲۱۵</td><td>۱۹۵–۲۲۴</td></tr>
+              <tr><td>استاد معلم</td><td>۱۶۰–۲۰۰</td><td>۲۰۱–۲۵۰</td><td>۲۱۶–۲۷۰</td><td>۲۲۵–۲۸۰</td></tr>
+            </tbody>
+          </table>
+          <div class="highlight-box info">
+            <span class="highlight-icon">📝</span>
+            <span><strong>تبصره‌ها و توضیحات پایانی:</strong> احراز رتبه صرفاً با جمع کل انجام نمی‌شود؛ هر چهار مؤلفه باید در بازه امتیازی همان رتبه قرار گیرند.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div id="tab-ranks" class="tab-content">
+  <div class="section-header">
+    <div class="section-title">
+      <div class="section-icon" style="background: linear-gradient(135deg, #6c3483, #8e44ad);">🏆</div>
+      رتبه‌ها و حداقل‌ها
+    </div>
+    <div class="section-desc">شرط سنوات، درصد فوق‌العاده و حداقل امتیازهای لازم</div>
+  </div>
+
+  <div class="cards-grid-2">
+    <div class="card card-purple">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <div class="card-icon-box">💰</div>
+          <div>
+            <div class="card-title">درصد فوق‌العاده رتبه‌ها</div>
+            <div class="card-subtitle">از آموزشیار تا استاد معلم</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <table class="table-mini">
+            <thead>
+              <tr>
+                <th>رتبه</th>
+                <th>درصد فوق‌العاده</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>آموزشیار معلم</td><td>۴۵٪</td></tr>
+              <tr><td>مربی معلم</td><td>۵۵٪</td></tr>
+              <tr><td>استادیار معلم</td><td>۶۵٪</td></tr>
+              <tr><td>دانشیار معلم</td><td>۷۵٪</td></tr>
+              <tr><td>استاد معلم</td><td>۹۰٪</td></tr>
+            </tbody>
+          </table>
+          <div class="highlight-box">
+            <span class="highlight-icon">📌</span>
+            <span>این درصدها از مجموع امتیازات حق شغل، حق شاغل و فوق‌العاده شغل به‌صورت جداگانه درج و ماهانه پرداخت می‌شود.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-gold">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <div class="card-icon-box">⏳</div>
+          <div>
+            <div class="card-title">شرط سنوات برای ارتقاء</div>
+            <div class="card-subtitle">تعجیل سنوات لحاظ می‌شود</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>آموزشیار: بدو خدمت.</li>
+            <li>مربی: حداقل ۵ سال خدمت در رتبه قبلی.</li>
+            <li>استادیار: حداقل ۱۰ سال.</li>
+            <li>دانشیار: حداقل ۱۵ سال.</li>
+            <li>استاد: حداقل ۲۱ سال.</li>
+          </ul>
+          <div class="highlight-box info">
+            <span class="highlight-icon">🔎</span>
+            <span>تعجیل سنوات برای مشمولین تبصره (۱) ماده (۵) اعمال می‌شود و سامانه شرایط را کنترل می‌کند.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cards-grid cards-grid-1">
+    <div class="card card-teal">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <div class="card-icon-box">📊</div>
+          <div>
+            <div class="card-title">حداقل امتیاز هر شایستگی برای هر رتبه</div>
+            <div class="card-subtitle">بازه‌های امتیازی رسمی برای احراز رتبه</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <table class="table-mini">
+            <thead>
+              <tr>
+                <th>رتبه</th>
+                <th>عمومی</th>
+                <th>تخصصی</th>
+                <th>حرفه‌ای</th>
+                <th>تجربه</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>آموزشیار</td><td>تا ۹۹</td><td>تا ۱۲۵</td><td>تا ۱۴۰</td><td>تا ۱۳۴</td></tr>
+              <tr><td>مربی</td><td>۱۰۰–۱۱۹</td><td>۱۲۶–۱۵۰</td><td>۱۴۱–۱۶۵</td><td>۱۳۵–۱۶۴</td></tr>
+              <tr><td>استادیار</td><td>۱۲۰–۱۳۹</td><td>۱۵۱–۱۷۵</td><td>۱۶۶–۱۹۰</td><td>۱۶۵–۱۹۴</td></tr>
+              <tr><td>دانشیار</td><td>۱۴۰–۱۵۹</td><td>۱۷۶–۲۰۰</td><td>۱۹۱–۲۱۵</td><td>۱۹۵–۲۲۴</td></tr>
+              <tr><td>استاد</td><td>۱۶۰–۲۰۰</td><td>۲۰۱–۲۵۰</td><td>۲۱۶–۲۷۰</td><td>۲۲۵–۲۸۰</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div id="tab-topics" class="tab-content">
+  <div class="section-header" id="sec-topics">
+    <div class="section-title">
+      <div class="section-icon" style="background: linear-gradient(135deg, #8e44ad, #1abc9c);">✨</div>
+      کارت‌های موضوعی امتیازدهی
+    </div>
+    <div class="section-desc">هر کارت یک محور امتیازدهی یا شایستگی را خلاصه می‌کند</div>
+  </div>
+
+  <div class="topics-block">
+    <div class="topics-block-title">بدون نیاز به بارگذاری سند</div>
+    <div class="topics-block-desc">امتیاز این موارد عمدتاً از سامانه یا حکم کارگزینی دریافت می‌شود.</div>
+  </div>
+
+  <div class="topics-behavior-box">
+    <div class="topics-behavior-grid">
+      <div class="topics-behavior-item"><strong>عمومی:</strong> ۲۰۰ امتیاز رفتاری</div>
+      <div class="topics-behavior-item"><strong>تخصصی:</strong> ۸۰ امتیاز رفتاری</div>
+      <div class="topics-behavior-item"><strong>حرفه‌ای:</strong> ۱۰۰ امتیاز رفتاری</div>
+      <div class="topics-behavior-item"><strong>تجربه:</strong> مؤلفه رفتاری ندارد</div>
+    </div>
+  </div>
+
+  <div class="no-upload-layout">
+    <div class="no-upload-frame">
+      <div class="no-upload-frame-title">شایستگی تجربه</div>
+      <div class="no-upload-cards-two">
+        <div class="card card-blue">
+          <div class="card-stripe"></div>
+          <div class="card-body">
+            <div class="card-header-row">
+              <div class="card-icon-box">⏳</div>
+              <div>
+                <div class="card-title">سنوات خدمتی تجربی (۰ تا ۱۳۰ امتیاز)</div>
+                <div class="card-subtitle">محاسبه پلکانی برحسب سال‌های سابقه | بارگذاری سند: لازم نیست</div>
+              </div>
+            </div>
+            <div class="card-content">
+              <table class="table-mini">
+                <thead>
+                  <tr>
+                    <th>بازه سنوات</th>
+                    <th>امتیاز هر سال</th>
+                    <th>سقف</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>۱ تا ۵ سال</td><td>۲ امتیاز</td><td>۱۰</td></tr>
+                  <tr><td>۶ تا ۱۰ سال</td><td>۳ امتیاز</td><td>۱۵</td></tr>
+                  <tr><td>۱۱ تا ۱۵ سال</td><td>۴ امتیاز</td><td>۲۰</td></tr>
+                  <tr><td>۱۶ تا ۲۰ سال</td><td>۵ امتیاز</td><td>۲۵</td></tr>
+                  <tr><td>۲۱ سال و بالاتر</td><td>۶ امتیاز</td><td>۶۰</td></tr>
+                </tbody>
+              </table>
+              <div class="highlight-box info">
+                <span class="highlight-icon">🧮</span>
+                <span>مثال: ۲۳ سال سابقه = ۱۰ + ۱۵ + ۲۰ + ۲۵ + (۳×۶) = ۸۸ امتیاز</span>
+              </div>
+              <div class="highlight-box success">
+                <span class="highlight-icon">📌</span>
+                <span>ملاک احتساب سنوات خدمتی (بند ۱ جدول ۴) براساس سنوات خدمت تجربی و طبق شرایط زیر است:</span>
+              </div>
+              <ul>
+                <li>سنوات <span class="keyword-highlight">حق‌التدریسی</span>، <span class="keyword-highlight">نهضت سوادآموزی</span> و <span class="keyword-highlight">خرید خدمات آموزشی</span>، فقط به میزانی که در حکم کارگزینی اعمال شده باشد، قابل احتساب است.</li>
+                <li>ایام خدمت <span class="keyword-highlight">نظام‌وظیفه</span>/<span class="keyword-highlight">سربازمعلم</span> (امریه آموزش و پرورش) به شرط پرداخت بیمه و با کسر دوران آموزشی، قابل احتساب است.</li>
+                <li>ایام اشتغال در <span class="keyword-highlight">سایر دستگاه‌ها</span> (خارج از آموزش و پرورش) قابل احتساب نیست.</li>
+                <li>مدت اشتغال در <span class="keyword-highlight">مشاغل غیرمرتبط</span> با طرح طبقه‌بندی مشاغل معلمان قابل احتساب نیست.</li>
+                <li>ایام تحصیل <span class="keyword-highlight">دانشجویان متعهد خدمت</span> به‌عنوان سنوات تجربی قابل احتساب نیست.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-teal">
+          <div class="card-stripe"></div>
+          <div class="card-body">
+            <div class="card-header-row">
+              <div class="card-icon-box">📊</div>
+              <div>
+                <div class="card-title">ارزشیابی سالانه (۰ تا ۳۰ امتیاز)</div>
+                <div class="card-subtitle">فرمول: (میانگین × ۳۰) ÷ ۱۰۰ | بارگذاری سند: لازم نیست</div>
+              </div>
+            </div>
+            <div class="card-content">
+              <ul>
+                <li>امتیاز براساس میانگین نمره ارزشیابی سالانه در طول دوره ارزیابی (حداکثر ۵ سال منتهی به تاریخ مشمولیت) محاسبه می‌شود.</li>
+                <li>فرمول: امتیاز ارزشیابی = (میانگین × ۳۰) ÷ ۱۰۰.</li>
+                <li>مثال: میانگین ۹۸، امتیاز نهایی ۲۹٫۴ از ۳۰.</li>
+                <li>ارزشیابی نیروهای منتقل‌شده از سایر دستگاه‌های اجرایی مورد پذیرش است.</li>
+                <li>اگر فرد چند سال پیاپی تا قبل از تاریخ مشمولیت در مرخصی بدون حقوق بوده باشد، آخرین ارزشیابی قبل از مرخصی بدون حقوق ملاک عمل است.</li>
+                <li>برای افراد جدیدالاستخدام، ملاک محاسبه ارزشیابی از زمان استخدام است.</li>
+                <li>ارزشیابی ایام تحصیل <span class="keyword-highlight">دانشجویان متعهد خدمت</span> قابل محاسبه نیست.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="no-upload-frame spec">
+      <div class="no-upload-frame-title">شایستگی تخصصی</div>
+      <div class="no-upload-cards-one">
+        <div class="card card-green">
+          <div class="card-stripe"></div>
+          <div class="card-body">
+            <div class="card-header-row">
+              <div class="card-icon-box">🎓</div>
+              <div>
+                <div class="card-title">مدرک تحصیلی و محل تحصیل (۳۰ تا ۱۳۰ امتیاز)</div>
+                <div class="card-subtitle">براساس آخرین مدرک در حکم + امتیاز محل تحصیل | بارگذاری سند: لازم نیست</div>
+              </div>
+            </div>
+            <div class="card-content">
+              <ul>
+                <li>آخرین مدرک تحصیلی اعمال‌شده قبل از تاریخ مشمولیت جدید در حکم کارگزینی ملاک امتیاز است.</li>
+                <li>مدرک تحصیلی باید در بازه معتبر مشمولیت و مطابق حکم کارگزینی باشد.</li>
+              </ul>
+              <table class="table-mini">
+                <thead>
+                  <tr>
+                    <th>مدرک</th>
+                    <th>امتیاز</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>دیپلم</td><td>۳۰</td></tr>
+                  <tr><td>کاردانی</td><td>۵۰</td></tr>
+                  <tr><td>کارشناسی</td><td>۷۰</td></tr>
+                  <tr><td>کارشناسی ارشد</td><td>۹۰</td></tr>
+                  <tr><td>دکتری</td><td>۱۱۰</td></tr>
+                </tbody>
+              </table>
+              <div class="highlight-box success">
+                <span class="highlight-icon">🎯</span>
+                <span>تحصیل در دانشسرا، مراکز تربیت‌معلم یا دانشگاه فرهنگیان: ۲۰ امتیاز اضافی</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topics-block" style="margin-top:16px;">
+    <div class="topics-block-title">نیازمند بارگذاری سند</div>
+    <div class="topics-block-desc">برای این موارد، مستندات معتبر باید توسط فرد در سامانه بارگذاری شود.</div>
+  </div>
+
+  <div class="upload-main-frame">
+    <div class="upload-main-title">شایستگی تخصصی (نیازمند بارگذاری سند)</div>
+    <div class="upload-legend">
+      <span class="upload-legend-item">کارت‌های فشرده برای مرور سریع</span>
+      <span class="upload-legend-item school">قابل تأیید در سطح مدرسه (مدیر مدرسه)</span>
+    </div>
+    <div class="highlight-box danger upload-important-note">
+      <span class="highlight-icon">⚠️</span>
+      <span>نکته مهم: در مواردی که مرجع تأییدکننده بالاتر از مدرسه است، صرف ارائه «اثر» کافی نیست؛ باید اثر را به اداره/مرجع مربوطه ارائه کنید، گواهی معتبر دریافت کنید و همان گواهی را بارگذاری نمایید.</span>
+    </div>
+
+    <div class="upload-subframes-grid">
+      <div class="upload-subframe build">
+        <div class="upload-subframe-title">تولید و ساخت (۳۰ امتیاز)</div>
+        <div class="upload-subframe-meta">تعداد سند جهت بارگذاری: ۴ سند | هر بند حداکثر ۲ مورد | امتیاز هر بند مستقل | حداکثر ۳۰ امتیاز</div>
+        <div class="upload-items-grid">
+          <div class="upload-item-card">
+            <div class="upload-item-head">
+              <div class="upload-item-title">ساخت ابزارها و تجهیزات آموزشی، تربیتی، ورزشی و اداری</div>
+              <div class="upload-item-score">۱۵ امتیاز</div>
+            </div>
+            <div class="upload-item-ref">مرجع تأییدکننده: منطقه / استان / ستاد</div>
+            <div class="upload-item-note">گواهی رسمی با امضا، شماره و تاریخ از اداره/استان/ستاد یا سازمان پژوهش.</div>
+          </div>
+
+          <div class="upload-item-card">
+            <div class="upload-item-head">
+              <div class="upload-item-title">طراحی و تولید نرم‌افزارهای آموزشی، تربیتی، ورزشی و اداری</div>
+              <div class="upload-item-score">۱۵ امتیاز</div>
+            </div>
+            <div class="upload-item-ref">مرجع تأییدکننده: منطقه / استان / ستاد</div>
+            <div class="upload-item-note">گواهی رسمی با امضا، شماره و تاریخ از اداره/استان/ستاد یا سازمان پژوهش.</div>
+          </div>
+
+          <div class="upload-item-card school-level">
+            <div class="upload-item-head">
+              <div class="upload-item-title">ساخت وسایل کمک آموزشی و کمک توان‌بخشی</div>
+              <div class="upload-item-score">۱۰ امتیاز</div>
+            </div>
+            <div class="upload-item-ref">مرجع تأییدکننده: مدرسه / منطقه / استان / ستاد</div>
+            <div class="upload-item-tag">قابل تأیید در سطح مدرسه</div>
+            <div class="upload-item-note">گواهی با امضا، شماره و تاریخ؛ تأیید از مدیر مدرسه یا سطوح بالاتر پذیرفته است.</div>
+          </div>
+
+          <div class="upload-item-card school-level">
+            <div class="upload-item-head">
+              <div class="upload-item-title">آشنایی با ابزار، تجهیزات و تکنیک‌های نوین</div>
+              <div class="upload-item-score">۵ امتیاز</div>
+            </div>
+            <div class="upload-item-ref">مرجع تأییدکننده: مدرسه / منطقه / استان / ستاد</div>
+            <div class="upload-item-tag">قابل تأیید در سطح مدرسه</div>
+            <div class="upload-item-note">گواهی با امضا، شماره و تاریخ؛ تأیید مدیر مدرسه کفایت دارد.</div>
+          </div>
+
+          <div class="upload-item-card school-level">
+            <div class="upload-item-head">
+              <div class="upload-item-title">تولید محتوا در فضای مجازی، طراحی، تولید و تدوین بسته‌های یادگیری و درسنامه</div>
+              <div class="upload-item-score">۵ امتیاز</div>
+            </div>
+            <div class="upload-item-ref">مرجع تأییدکننده: مدرسه / منطقه / استان / ستاد</div>
+            <div class="upload-item-tag">قابل تأیید در سطح مدرسه</div>
+            <div class="upload-item-note">گواهی با امضا، شماره و تاریخ از مدیر مدرسه یا مراجع بالاتر و سازمان‌های تابعه.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="upload-subframe research">
+        <div class="upload-subframe-title">پژوهش‌های مرتبط با بهبود عملکرد معلم، تألیف و تدوین کتب و مقالات (۳۰ امتیاز)</div>
+        <div class="upload-subframe-meta">تعداد سند جهت بارگذاری: ۱۰ سند | هر بند حداکثر ۴ مورد | امتیاز هر بند مستقل | حداکثر ۳۰ امتیاز</div>
+        <div class="upload-items-grid">
+          <div class="upload-item-card school-level">
+            <div class="upload-item-head">
+              <div class="upload-item-title">اقدام‌پژوهی</div>
+              <div class="upload-item-score">۳ امتیاز</div>
+            </div>
+            <div class="upload-item-ref">مرجع تأییدکننده: مدرسه / منطقه / استان / ستاد</div>
+            <div class="upload-item-tag">قابل تأیید در سطح مدرسه</div>
+            <div class="upload-item-note">در گواهی: عنوان اقدام‌پژوهی، موضوع، تاریخ اجرا + امضا/شماره/تاریخ.</div>
+          </div>
+
+          <div class="upload-item-card school-level">
+            <div class="upload-item-head">
+              <div class="upload-item-title">درس‌پژوهی</div>
+              <div class="upload-item-score">۲ امتیاز</div>
+            </div>
+            <div class="upload-item-ref">مرجع تأییدکننده: مدرسه / منطقه / استان / ستاد</div>
+            <div class="upload-item-tag">قابل تأیید در سطح مدرسه</div>
+            <div class="upload-item-note">در گواهی: عنوان درس‌پژوهی، موضوع، تاریخ اجرا + امضا/شماره/تاریخ.</div>
+          </div>
+
+          <div class="upload-item-card">
+            <div class="upload-item-head">
+              <div class="upload-item-title">تألیف کتاب در زمینه آموزشی، تربیتی و ورزشی</div>
+              <div class="upload-item-score">۵ امتیاز</div>
+            </div>
+            <div class="upload-item-ref">مرجع تأییدکننده: منطقه / استان / ستاد</div>
+            <div class="upload-item-note">در گواهی: عنوان کتاب مرتبط، شابک و تاریخ انتشار درج شود.</div>
+          </div>
+
+          <div class="upload-item-card">
+            <div class="upload-item-head">
+              <div class="upload-item-title">تدوین در زمینه آموزشی، ورزشی و تربیتی</div>
+              <div class="upload-item-score">۵ امتیاز</div>
+            </div>
+            <div class="upload-item-ref">مرجع تأییدکننده: منطقه / استان / ستاد</div>
+            <div class="upload-item-note">در گواهی: عنوان اثر، ارتباط با آموزش و پرورش و تاریخ انتشار درج شود.</div>
+          </div>
+
+          <div class="upload-item-card">
+            <div class="upload-item-head">
+              <div class="upload-item-title">ترجمه کتاب در زمینه آموزشی، تربیتی و ورزشی</div>
+              <div class="upload-item-score">۵ امتیاز</div>
+            </div>
+            <div class="upload-item-ref">مرجع تأییدکننده: شهرستان / استان / ستاد</div>
+            <div class="upload-item-note">در گواهی: عنوان کتاب مرتبط، شابک و تاریخ انتشار درج شود.</div>
+          </div>
+
+          <div class="upload-item-card">
+            <div class="upload-item-head">
+              <div class="upload-item-title">مقاله علمی پژوهشی</div>
+              <div class="upload-item-score">۵ امتیاز</div>
+            </div>
+            <div class="upload-item-ref">مرجع تأییدکننده: منطقه / استان / ستاد</div>
+            <div class="upload-item-note">در گواهی: عنوان مقاله، نشریه/نمایه و تاریخ چاپ درج شود.</div>
+          </div>
+
+          <div class="upload-item-card">
+            <div class="upload-item-head">
+              <div class="upload-item-title">مقاله علمی ترویجی</div>
+              <div class="upload-item-score">۴ امتیاز</div>
+            </div>
+            <div class="upload-item-ref">مرجع تأییدکننده: منطقه / استان / ستاد</div>
+            <div class="upload-item-note">در گواهی: عنوان مقاله، نشریه/نمایه و تاریخ چاپ درج شود.</div>
+          </div>
+
+          <div class="upload-item-card">
+            <div class="upload-item-head">
+              <div class="upload-item-title">مقاله پذیرفته‌شده در فراخوان‌های علمی معتبر و مرتبط با آموزش و پرورش (کنفرانسی)</div>
+              <div class="upload-item-score">۳ امتیاز</div>
+            </div>
+            <div class="upload-item-ref">مرجع تأییدکننده: منطقه / استان / ستاد</div>
+            <div class="upload-item-note">در گواهی: عنوان مقاله، عنوان فراخوان، سطح فراخوان و تاریخ برگزاری درج شود. پایان‌نامه: فرم داوری تأییدشده + امضای مرجع ذی‌ربط.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pro-main-frame">
+    <div class="pro-main-title">شایستگی حرفه‌ای (نیازمند بارگذاری سند)</div>
+    <div class="pro-main-meta">
+      <span class="pro-main-badge">امتیاز کل حرفه‌ای: ۲۷۰ (رفتاری ۱۰۰ + سندی ۱۷۰)</span>
+      <span class="pro-main-badge">در مؤلفه‌های سندی: بارگذاری گواهی معتبر الزامی است</span>
+    </div>
+
+    <div class="pro-cards-grid">
+      <div class="card card-teal">
+        <div class="card-stripe"></div>
+        <div class="card-body">
+          <div class="card-header-row">
+            <div class="card-icon-box">🤝</div>
+            <div>
+              <div class="card-title">همکاری در اداره امور واحدها (۰ تا ۵۰ امتیاز)</div>
+              <div class="card-subtitle">۱۰ سند | هر ردیف حداکثر ۳ مورد | بارگذاری سند: لازم است</div>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="quick-badges">
+              <span class="quick-badge">سقف: ۵۰</span>
+              <span class="quick-badge">۱۰ سند</span>
+              <span class="quick-badge">هر ردیف: حداکثر ۳</span>
+            </div>
+            <div class="quick-table-title">خلاصه مورد/امتیاز</div>
+            <table class="table-mini table-quick">
+              <thead>
+                <tr>
+                  <th>مورد</th>
+                  <th>امتیاز</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>عضویت در کارگروه‌ها</td><td>۵</td></tr>
+                <tr><td>حضور در شوراها و جلسات</td><td>۵</td></tr>
+                <tr><td>حضور فعال در انجمن‌های علمی معلمان</td><td>۵</td></tr>
+                <tr><td>عضویت در بسیج فرهنگیان</td><td>۵</td></tr>
+                <tr><td>عضویت در کمیته‌های مصوب</td><td>۵</td></tr>
+                <tr><td>عضویت در گروه آموزشی</td><td>۵</td></tr>
+                <tr><td>عضویت در انجمن اولیا و مربیان</td><td>۵</td></tr>
+                <tr><td>عضویت در شورای مدرسه</td><td>۵</td></tr>
+                <tr><td>مشارکت در فعالیت فوق‌برنامه</td><td>۵</td></tr>
+                <tr><td>عضویت در ستاد تربیتی مدرسه</td><td>۵</td></tr>
+              </tbody>
+            </table>
+            <div class="example-groups">
+              <div class="example-group workgroup">
+                <div class="example-title">نمونه مصادیق «عضویت در کارگروه‌ها» (لیست بازشونده سامانه)</div>
+                <div class="example-pills">
+                  <span class="example-pill">کارگروه ارزشیابی توصیفی</span>
+                  <span class="example-pill">کارگروه تولید محتوای آموزشی</span>
+                  <span class="example-pill">کارگروه بهبود کیفیت سواد</span>
+                  <span class="example-pill">کارگروه جابربن حیان</span>
+                  <span class="example-pill">کارگروه اصلاح روش‌های آموزش</span>
+                  <span class="example-pill">کارگروه طرح حامی</span>
+                  <span class="example-pill">کارگروه مربیان دوره ی آمار</span>
+                  <span class="example-pill">کارگروه تیم مداخله در بحران</span>
+                  <span class="example-pill">کارگروه استقبال جشنواره درسی</span>
+                  <span class="example-pill">کارگروه فعالیت‌های تابستانی</span>
+                  <span class="example-pill">کارگروه کاری نو مدیران</span>
+                  <span class="example-pill">کارگروه کاری نو دانش‌آموزی</span>
+                </div>
+              </div>
+
+              <div class="example-group committee">
+                <div class="example-title">نمونه مصادیق «عضویت در کمیته‌های مصوب» (لیست بازشونده سامانه)</div>
+                <div class="example-pills">
+                  <span class="example-pill">کمیته ی ارتقای سواد پایه</span>
+                  <span class="example-pill">کمیته ارزشیابی کیفی-توصیفی</span>
+                  <span class="example-pill">کمیته برنامه‌ریزی جشنواره جانبرین حیان (جابربن حیان)</span>
+                  <span class="example-pill">کمیته بهبود کیفیت آموزشی</span>
+                  <span class="example-pill">کمیته آموزش چندپایه روستایی</span>
+                  <span class="example-pill">کمیته تولید محتوای آموزشی و فضای مجازی</span>
+                  <span class="example-pill">کمیته توانمند سازی نیروی انسانی</span>
+                  <span class="example-pill">کمیته ی طرح حامی</span>
+                  <span class="example-pill">کمیته ی فنی نماد</span>
+                  <span class="example-pill">کمیته مشاوره و مددکاری اجتماعی</span>
+                  <span class="example-pill">ستاد اجرایی دبیرخانه تفکر و سبک زندگی</span>
+                  <span class="example-pill">ستاد اجرایی دبیرخانه تجارب برتر تربیتی</span>
+                </div>
+              </div>
+
+              <div class="example-group extracurricular">
+                <div class="example-title">نمونه مصادیق «مشارکت در فعالیت فوق‌برنامه» (لیست بازشونده سامانه)</div>
+                <div class="example-pills">
+                  <span class="example-pill">داوری مسابقات</span>
+                  <span class="example-pill">عوامل امتحانات و آزمون‌ها</span>
+                  <span class="example-pill">برپایی مانور زلزله</span>
+                  <span class="example-pill">گواهی حضور فعال در اجرای طرح پویش</span>
+                  <span class="example-pill">برپایی جشن‌های نیکوکاری و عاطفه‌ها</span>
+                  <span class="example-pill">سایر</span>
+                </div>
+              </div>
+            </div>
+            <ul>
+              <li>مرجع‌ها: کارگروه/کمیته/گروه/بسیج = منطقه/استان/ستاد | شوراها و فوق‌برنامه = مدرسه/منطقه/استان/ستاد | انجمن علمی = استان.</li>
+              <li>موارد مدرسه‌ای: <span class="keyword-highlight">انجمن اولیا</span>، <span class="keyword-highlight">شورای مدرسه</span>، <span class="keyword-highlight">ستاد تربیتی</span> (امضای مدیر مدرسه).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-gold">
+        <div class="card-stripe"></div>
+        <div class="card-body">
+          <div class="card-header-row">
+            <div class="card-icon-box">🧑‍🏫</div>
+            <div>
+              <div class="card-title">سابقه تدریس به همکاران (۰ تا ۳۰ امتیاز تشویقی)</div>
+              <div class="card-subtitle">ضمن‌خدمت، دانشگاه وابسته، کارگاه تخصصی | بارگذاری سند: لازم است</div>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="quick-badges">
+              <span class="quick-badge">تشویقی</span>
+              <span class="quick-badge">سقف استادیار: ۱۰</span>
+              <span class="quick-badge">دانشیار: ۲۰</span>
+              <span class="quick-badge">استاد: ۳۰</span>
+            </div>
+            <div class="quick-table-title">خلاصه مورد/امتیاز</div>
+            <table class="table-mini table-quick">
+              <thead>
+                <tr>
+                  <th>مورد</th>
+                  <th>امتیاز</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>گواهی تدریس در دوره ضمن‌خدمت</td><td>هر ۱۰ ساعت = ۱</td></tr>
+                <tr><td>گواهی تدریس در دانشگاه‌های وابسته وزارت</td><td>هر واحد = ۱</td></tr>
+                <tr><td>کلاس‌های تدریس در کارگاه تخصصی</td><td>هر مورد = ۲</td></tr>
+                <tr><td>کلاس‌های آموزش خانواده</td><td>هر مورد = ۲</td></tr>
+              </tbody>
+            </table>
+            <ul>
+              <li>مرجع‌ها: امور اداری/سامانه ضمن خدمت | دانشگاه فرهنگیان/شهید رجایی | منطقه/استان/ستاد.</li>
+              <li>در گواهی: عنوان دوره، ساعت تدریس و کد دوره درج شود.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-green">
+        <div class="card-stripe"></div>
+        <div class="card-body">
+          <div class="card-header-row">
+            <div class="card-icon-box">🧠</div>
+            <div>
+              <div class="card-title">یادگیری مستمر (۰ تا ۶۰ امتیاز)</div>
+              <div class="card-subtitle">دوره کوتاه‌مدت + مستندات مهارتی | بخشی سیستمی، بخشی نیازمند بارگذاری</div>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="quick-badges">
+              <span class="quick-badge">سقف کل: ۶۰</span>
+              <span class="quick-badge">کوتاه‌مدت: سقف ۴۰ (سیستمی)</span>
+              <span class="quick-badge">مستنداتی: سقف ۲۰</span>
+              <span class="quick-badge">۱۰ سند | هر ردیف: حداکثر ۳</span>
+            </div>
+            <div class="quick-table-title">خلاصه مورد/امتیاز</div>
+            <table class="table-mini table-quick">
+              <thead>
+                <tr>
+                  <th>مورد</th>
+                  <th>امتیاز</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>گذراندن دوره‌های کوتاه‌مدت آموزشی</td><td>هر ۵ ساعت = ۱</td></tr>
+                <tr><td>گواهی‌های مهارتی به غیر از ضمن خدمت</td><td>۵</td></tr>
+                <tr><td>مشارکت داوطلبانه و مشتاقانه با تجربیات مدرسه</td><td>۲</td></tr>
+                <tr><td>نشان دادن تعهد به یادگیری مداوم و تلاش مستمر برای کسب دانش</td><td>۴</td></tr>
+                <tr><td>گواهی شرکت در کارگاه‌های تخصصی مرتبط با وظایف شغلی</td><td>۲</td></tr>
+              </tbody>
+            </table>
+            <ul>
+              <li>بخش مستنداتی: سقف ۲۰ | ۱۰ سند | هر ردیف حداکثر ۳ مورد.</li>
+              <li>در موارد مدرسه‌ای، امضای مدیر مدرسه معتبر است.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-gold">
+        <div class="card-stripe"></div>
+        <div class="card-body">
+          <div class="card-header-row">
+            <div class="card-icon-box">🏆</div>
+            <div>
+              <div class="card-title">کسب مقام و تقدیرنامه (۰ تا ۶۰ امتیاز)</div>
+              <div class="card-subtitle">موفقیت‌ها و تقدیرنامه‌ها | بارگذاری سند: لازم است</div>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="quick-badges">
+              <span class="quick-badge">سقف کل: ۶۰</span>
+              <span class="quick-badge">تقدیرنامه: سقف ۲۰</span>
+              <span class="quick-badge">مسابقات/نمونه: سقف ۴۰</span>
+            </div>
+            <div class="quick-table-title">خلاصه مورد/امتیاز</div>
+            <table class="table-mini table-quick">
+              <thead>
+                <tr>
+                  <th>مورد</th>
+                  <th>امتیاز</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>رتبه اول تا سوم مسابقات منطقه‌ای/ناحیه‌ای/شهرستان</td><td>۲ تا ۴</td></tr>
+                <tr><td>رتبه اول تا سوم مسابقات استانی</td><td>۵ تا ۷</td></tr>
+                <tr><td>رتبه اول تا سوم مسابقات کشوری/بین‌المللی</td><td>۸ تا ۱۰</td></tr>
+                <tr><td>معلم نمونه مدرسه</td><td>۵</td></tr>
+                <tr><td>معلم/کارمند نمونه منطقه‌ای</td><td>۱۰</td></tr>
+                <tr><td>معلم/کارمند نمونه استانی</td><td>۲۰</td></tr>
+                <tr><td>معلم/کارمند نمونه کشوری</td><td>۳۰</td></tr>
+                <tr><td>تقدیرنامه (طبق جدول ۳)</td><td>تا ۲۰</td></tr>
+              </tbody>
+            </table>
+            <ul>
+              <li>تقدیرنامه وظیفه‌محور با شماره/تاریخ/موضوع پذیرفته می‌شود (مرجع: مدرسه تا ستاد).</li>
+              <li>جدول ۳: رئیس‌جمهور ۴ | وزیر ۳ | استاندار ۲.۵ | مدیرکل ۲ | رئیس اداره ۱.۵ | مدیر واحد ۱ (سالانه حداکثر ۳).</li>
+              <li>گواهی کسب مقام خارج از وزارت آموزش و پرورش، فقط در صورت تأیید حوزه مرتبط در اداره محل خدمت قابل پذیرش است.</li>
+              <li>در تقدیرنامه، واژه‌های «رتبه برتر/عالی/ممتاز» معادل رتبه اول محسوب می‌شود.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box info pro-callout">
+      <span class="highlight-icon">📎</span>
+      <span>کنترل نهایی حرفه‌ای: تاریخ معتبر، تناسب عنوان شایستگی با سند، امضا/شماره/تاریخ، سطح مرجع تأیید و تکراری نبودن سند قبل از تأیید نهایی بررسی شود.</span>
+    </div>
+  </div>
+
+  </div>
+
+  <div id="tab-about" class="tab-content">
+  <div class="section-header">
+    <div class="section-title">
+      <div class="section-icon" style="background: linear-gradient(135deg, #0f766e, #14b8a6);">ℹ️</div>
+      سامانه راهنمای رتبه‌بندی معلمان
+    </div>
+    <div class="section-desc">محاسبه کن · تشخیص بده · مطمئن بارگذاری کن | نسخه ۱.۰ — تیرماه ۱۴۰۴</div>
+  </div>
+
+  <div class="cards-grid-2">
+    <div class="card card-teal">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <div class="card-icon-box">🧭</div>
+          <div>
+            <div class="card-title">درباره برنامه</div>
+            <div class="card-subtitle">راهنمای هوشمند رتبه‌بندی فرهنگیان</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="highlight-box info">
+            <span class="highlight-icon">📌</span>
+            <span>این برنامه قبل از بارگذاری در سامانه رسمی کمک می‌کند امتیازها را محاسبه کنید، مستندات لازم را تشخیص دهید و پرونده را با خطای کمتر ثبت کنید.</span>
+          </div>
+          <div class="quick-table-title">این برنامه چیست؟</div>
+          <ul>
+            <li>راهنمای حاضر یک ابزار کمکی برای فرایند «نظام رتبه‌بندی معلمان» است.</li>
+            <li>مبنای محتوا: قانون نظام رتبه‌بندی معلمان، آیین‌نامه اجرایی و شیوه‌نامه‌های ابلاغی.</li>
+            <li>هدف محوری: کیفیت‌بخشی تعلیم‌وتربیت، ارتقای منزلت حرفه‌ای و استقرار ارزیابی مبتنی بر شایستگی و عملکرد.</li>
+          </ul>
+          <div class="quick-table-title">فرایند کلی و سامانه</div>
+          <ul>
+            <li>ارائه مدارک، ارزیابی و اعمال امتیاز، و ثبت اعتراضات همگی به‌صورت الکترونیکی در سامانه رتبه‌بندی انجام می‌شود.</li>
+            <li>این برنامه نقش «پیش از ثبت نهایی» را دارد؛ یعنی آماده‌سازی دقیق مدارک و کاهش خطاهای رایج قبل از ارسال پرونده.</li>
+          </ul>
+          <div class="quick-table-title">چرا به این برنامه نیاز دارید؟</div>
+          <table class="table-mini">
+            <thead>
+              <tr>
+                <th>مشکلات رایج</th>
+                <th>راه‌حل برنامه</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>عدم آگاهی از مستندات لازم</td><td>تشخیص هوشمند مستندات مورد نیاز</td></tr>
+              <tr><td>ناتوانی در محاسبه امتیازات</td><td>محاسبه خودکار امتیازات</td></tr>
+              <tr><td>بارگذاری اشتباه و برگشت پرونده</td><td>کاهش خطای بارگذاری قبل از ثبت نهایی</td></tr>
+              <tr><td>صرف زمان زیاد برای آزمون و خطا</td><td>مسیر مرحله‌به‌مرحله و قابل پیگیری</td></tr>
+            </tbody>
+          </table>
+          <div class="quick-table-title">ویژگی‌های کلیدی</div>
+          <ul>
+            <li>محاسبه خودکار امتیازات هر آیتم پیش از ثبت نهایی.</li>
+            <li>نمایش شفاف سقف امتیاز، شرایط پذیرش و ملاحظات هر بند.</li>
+            <li>تفکیک دقیق مؤلفه‌ها، شایستگی‌ها، مراجع تأییدکننده و مدارک قابل قبول.</li>
+            <li>پوشش وضعیت‌های «عدم رؤیت»، «عدم صحت»، «عدم تناسب» و «مستند تکراری» برای جلوگیری از خطا.</li>
+          </ul>
+          <div class="quick-table-title">منابع و مستندات مرجع</div>
+          <ul>
+            <li>شیوه‌نامه اجرایی و جداول رسمی امتیازدهی رتبه‌بندی معلمان.</li>
+            <li>راهنماهای مراجع تأییدکننده (مدیر مستقیم، امور اداری، ارزیاب حرفه‌ای، گزینش، حراست و هیئت ممیزه).</li>
+            <li>بخشنامه‌ها و اصلاحیه‌های مرتبط تا آخرین به‌روزرسانی در پروژه.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-blue about-stack-frame">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="about-stack-grid">
+          <div class="about-subcard">
+            <div class="card-header-row">
+              <div class="card-icon-box">👤</div>
+              <div>
+                <div class="card-title">درباره طراح سامانه</div>
+                <div class="card-subtitle">توسعه‌دهنده و طراح سامانه</div>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="highlight-box success">
+                <span class="highlight-icon">💬</span>
+                <span>«هیچ همکاری نباید به‌خاطر ندانستن، امتیازش را از دست بدهد.»</span>
+              </div>
+              <div class="quick-table-title">مشخصات طراح</div>
+              <ul>
+                <li>حسین مرسلی — دکتری منابع انسانی</li>
+                <li>کارشناس آموزش ضمن خدمت اداره کل</li>
+                <li>شماره تماس: <code>09141006030</code></li>
+                <li>پیام‌رسان‌ها: <code>@TABRIZ3EDU</code></li>
+              </ul>
+              <div class="quick-table-title">رویکرد و اصول طراحی</div>
+              <ul>
+                <li>دقت در قوانین: هر شرط و عدد، مبتنی بر مستندات رسمی برنامه است.</li>
+                <li>زبان ساده و کاربردی: محتوای پیچیده اداری به گام‌های قابل اجرا تبدیل شده است.</li>
+                <li>به‌روزرسانی مستمر: همگام با اصلاحیه‌ها و بخشنامه‌های جدید.</li>
+                <li>مسیر مرحله‌ای: از ورود تا ثبت نهایی و پیگیری پرونده.</li>
+              </ul>
+              <div class="quick-table-title">تعهد به کاربران</div>
+              <ul>
+                <li>استفاده از راهنما برای کاربران فرهنگی، ساده و بدون پیچیدگی اضافی طراحی شده است.</li>
+                <li>بازخورد کاربران در بهبود نسخه‌های بعدی برنامه لحاظ می‌شود.</li>
+                <li>هدف اصلی: تکمیل دقیق پرونده و کاهش ریسک برگشت مدارک.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="about-subcard">
+            <div class="card-header-row">
+              <div class="card-icon-box">🙏</div>
+              <div>
+                <div class="card-title">تقدیر و تشکر</div>
+                <div class="card-subtitle">همراهان تدوین این مجموعه</div>
+              </div>
+            </div>
+            <div class="card-content">
+              <ul>
+                <li>جناب آقای پورعباد، مدیر منابع انسانی اداره کل آموزش و پرورش استان آذربایجان شرقی و همکاران محترم آن مجموعه.</li>
+                <li>معاونت منابع انسانی، واحد آموزش ضمن خدمت و همکاران محترم این حوزه.</li>
+                <li>مدیریت محترم مدرسه مسعود سعد، ناحیه سه تبریز، بابت همکاری در تدوین این مجموعه.</li>
+              </ul>
+              <div class="quick-table-title">افزودن تصویر تقدیر (از فایل جداگانه)</div>
+              <div class="ack-image-tools">
+                <input id="ackImagePath" class="ack-image-input" type="text" placeholder="مثال: assets/thanks.jpg یا images/tashakor.png">
+                <button type="button" class="ack-image-btn" onclick="applyAckImagePath()">نمایش تصویر</button>
+              </div>
+              <div id="ackImageArea" class="ack-image-area">
+                <img id="ackMovableImage" class="ack-image" alt="تصویر تقدیر و تشکر">
+                <div id="ackImagePlaceholder" class="ack-image-placeholder">مسیر تصویر را وارد کنید و «نمایش تصویر» را بزنید؛ سپس تصویر را با ماوس یا لمس جابه‌جا کنید.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cards-grid cards-grid-1">
+    <div class="card card-gold">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <div class="card-icon-box">🏢</div>
+          <div>
+            <div class="card-title">اداره کل آموزش و پرورش استان آذربایجان شرقی</div>
+            <div class="card-subtitle">مرجع استانی راهبری و پشتیبانی فرایندهای آموزشی و اداری</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="quick-table-title">وظایف استانی در رتبه‌بندی (مبتنی بر آیین‌نامه اجرایی)</div>
+          <ul>
+            <li>تشکیل دبیرخانه هیئت ممیزه استانی در مدیریت منابع انسانی و امور اداری اداره‌کل (بدون توسعه تشکیلاتی).</li>
+            <li>نظارت بر عملکرد هیئت‌های ممیزه شهرستان/منطقه/ناحیه و اصلاح یا ابطال تصمیمات مغایر ضوابط.</li>
+            <li>پشتیبانی از دبیرخانه‌های سطوح پایین‌تر برای اجرای یکنواخت رویه‌ها.</li>
+            <li>پاسخ‌گویی به استعلامات درباره نحوه رسیدگی، محاسبه امتیازات و تعیین رتبه‌ها.</li>
+            <li>بررسی و تأیید رتبه استادیار معلم و بررسی رتبه دانشیار معلم برای ارسال به مرجع مرکزی.</li>
+            <li>رسیدگی به اعتراضات سطوح پایین‌تر و ارجاع موارد لازم به سطح مرکزی.</li>
+            <li>پشتیبانی سامانه رتبه‌بندی در سطح استان و ارائه گزارش‌های دوره‌ای موانع و مشکلات اجرایی.</li>
+          </ul>
+          <div class="highlight-box info">
+            <span class="highlight-icon">🎯</span>
+            <span>هدف این راهنما: کمک به همکاران فرهنگی استان آذربایجان شرقی برای ثبت، محاسبه، بارگذاری و پیگیری دقیق‌تر پرونده‌های رتبه‌بندی.</span>
+          </div>
+          <div class="highlight-box success">
+            <span class="highlight-icon">📍</span>
+            <span>استان آذربایجان شرقی — ۱۴۰۴</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topics-subgroup">اقدامات اداره کل آموزش و پرورش استان آذربایجان شرقی</div>
+  <div class="cards-grid-2">
+    <div class="card card-purple">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <div class="card-icon-box">🏛️</div>
+          <div>
+            <div class="card-title">ساختار تصمیم‌گیری رتبه‌ها</div>
+            <div class="card-subtitle">اقدام اداره کل در مسیر بررسی چندسطحی: منطقه/ناحیه → استان → مرکزی</div>
+          </div>
+        </div>
+          <div class="card-content">
+          <div class="highlight-box info">
+            <span class="highlight-icon">🏢</span>
+            <span>این بخش، سازوکار تصمیم‌گیری رتبه‌ها را در زنجیره اجرایی اداره کل و هیئت‌های ممیزه نشان می‌دهد.</span>
+          </div>
+          <ul>
+            <li>رتبه‌های آموزشیار، مربی و استادیار ابتدا در هیئت ممیزه شهرستان/منطقه/ناحیه بررسی می‌شوند.</li>
+            <li>پرونده‌های دانشیار پس از بررسی سطح پایین‌تر، برای تأیید نهایی به هیئت ممیزه استان ارسال می‌شود.</li>
+            <li>پرونده‌های استاد معلم پس از طی سطوح پایین‌تر، برای تأیید نهایی به هیئت ممیزه مرکزی ارجاع می‌گردد.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-teal">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header-row">
+          <div class="card-icon-box">🗂️</div>
+          <div>
+            <div class="card-title">کارگروه‌های تخصصی و به‌روزرسانی‌های رسمی</div>
+            <div class="card-subtitle">اقدامات اداره کل: کارگروه‌های تخصصی + تاریخ‌های مهم ابلاغ</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>هیئت‌های ممیزه می‌توانند کارگروه‌های اجرایی/تخصصی مانند ابتدایی، متوسطه، فرهنگی‌پرورشی، تربیت‌بدنی و سلامت تشکیل دهند.</li>
+            <li>در صورت نیاز، کارگروه‌های تخصصی فرعی متناسب با رشته و عنوان شغلی برای ارزیابی دقیق‌تر تشکیل می‌شود.</li>
+          </ul>
+          <div class="highlight-box success">
+            <span class="highlight-icon">🗓️</span>
+            <span>بر اساس مستندات پروژه: تصویب آیین‌نامه در جلسه ۱۴۰۴/۱۰/۰۳، ابلاغ در ۱۴۰۴/۱۰/۲۱ و آغاز بارگذاری مدارک مشمولین ارتقاء از ۱۴۰۴/۱۰/۲۸ در <code>my.medu.ir</code>.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+  <script>
+    function resetAckImagePosition() {
+      const area = document.getElementById('ackImageArea');
+      const img = document.getElementById('ackMovableImage');
+      if (!area || !img || img.style.display === 'none') return;
+      const maxX = Math.max(0, area.clientWidth - img.offsetWidth);
+      const maxY = Math.max(0, area.clientHeight - img.offsetHeight);
+      img.style.left = `${Math.min(10, maxX)}px`;
+      img.style.top = `${Math.min(10, maxY)}px`;
+    }
+
+    function applyAckImagePath() {
+      const input = document.getElementById('ackImagePath');
+      const img = document.getElementById('ackMovableImage');
+      const holder = document.getElementById('ackImagePlaceholder');
+      if (!input || !img || !holder) return;
+
+      const path = input.value.trim();
+      if (!path) {
+        img.removeAttribute('src');
+        img.style.display = 'none';
+        holder.style.display = 'flex';
+        holder.textContent = 'مسیر تصویر را وارد کنید و «نمایش تصویر» را بزنید؛ سپس تصویر را با ماوس یا لمس جابه‌جا کنید.';
+        return;
+      }
+
+      img.onload = function () {
+        img.style.display = 'block';
+        holder.style.display = 'none';
+        resetAckImagePosition();
+      };
+
+      img.onerror = function () {
+        img.style.display = 'none';
+        holder.style.display = 'flex';
+        holder.textContent = 'تصویر پیدا نشد. مسیر فایل را بررسی کنید (مثال: assets/thanks.jpg).';
+      };
+
+      img.src = path;
+    }
+
+    function initAckImageDrag() {
+      const area = document.getElementById('ackImageArea');
+      const img = document.getElementById('ackMovableImage');
+      if (!area || !img) return;
+
+      let dragging = false;
+      let offsetX = 0;
+      let offsetY = 0;
+
+      const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+      img.addEventListener('pointerdown', function (e) {
+        if (img.style.display === 'none') return;
+        dragging = true;
+        const rect = img.getBoundingClientRect();
+        offsetX = e.clientX - rect.left;
+        offsetY = e.clientY - rect.top;
+        img.setPointerCapture(e.pointerId);
+        img.style.cursor = 'grabbing';
+        e.preventDefault();
+      });
+
+      img.addEventListener('pointermove', function (e) {
+        if (!dragging) return;
+        const areaRect = area.getBoundingClientRect();
+        const maxX = Math.max(0, area.clientWidth - img.offsetWidth);
+        const maxY = Math.max(0, area.clientHeight - img.offsetHeight);
+        const x = clamp(e.clientX - areaRect.left - offsetX, 0, maxX);
+        const y = clamp(e.clientY - areaRect.top - offsetY, 0, maxY);
+        img.style.left = `${x}px`;
+        img.style.top = `${y}px`;
+      });
+
+      const endDrag = function () {
+        dragging = false;
+        img.style.cursor = 'grab';
+      };
+
+      img.addEventListener('pointerup', endDrag);
+      img.addEventListener('pointercancel', endDrag);
+      window.addEventListener('resize', resetAckImagePosition);
+    }
+
+    document.addEventListener('DOMContentLoaded', initAckImageDrag);
+
+    function showTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      const target = document.getElementById(tabId);
+      if (target) {
+        target.classList.add('active');
+      }
+      if (event && event.target) {
+        event.target.closest('.tab-btn').classList.add('active');
+      }
+      const nav = document.querySelector('.tab-nav');
+      if (nav) {
+        window.scrollTo({ top: nav.offsetTop - 10, behavior: 'smooth' });
+      }
+    }
+  </script>
+</body>
+</html>
+
